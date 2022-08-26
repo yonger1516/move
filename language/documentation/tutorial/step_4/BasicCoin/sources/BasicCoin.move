@@ -63,7 +63,9 @@ module NamedAddr::BasicCoin {
         let Coin { value: _amount } = check; // unpacks the check
 
         // Get a mutable reference of addr's balance's coin value
+        let balance_ref=&mut borrow_global_mut<Balance>(addr).coin.value;
 
         // Increment the value by `amount`
+        *balance_ref=balance+ Coin(amount)
     }
 }
